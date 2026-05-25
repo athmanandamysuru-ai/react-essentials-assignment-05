@@ -54,7 +54,6 @@ const useFilters= (data) => {
             return true;
         });
 
-        // Apply sorting
         result.sort((a, b) => {
             let aVal, bVal;
 

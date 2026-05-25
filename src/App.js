@@ -223,6 +223,76 @@ function App() {
           </p>
         </div>
       </div>
+
+      {getMonthlyStats.length > 0 && (
+        <div
+          className="monthly-summary"
+          style={{
+            margin: "20px",
+            padding: "15px",
+            backgroundColor: "#f5f5f5",
+            borderRadius: "5px",
+            border: "1px solid #ddd",
+          }}
+        >
+          <h3 style={{marginBottom: '10px'}}>Monthly Summary</h3>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+              gap: "15px",
+            }}
+          >
+            {getMonthlyStats.map((monthData) => {
+              const [year, month] = monthData.month.split("-");
+              const monthNames = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December",
+              ];
+              return (
+                <div
+                  key={monthData.month}
+                  style={{
+                    padding: "12px",
+                    backgroundColor: "white",
+                    borderRadius: "4px",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                  }}
+                >
+                  <h4 style={{ margin: "0 0 10px 0" }}>
+                    {monthNames[parseInt(month) - 1]} {year}
+                  </h4>
+                  <p style={{ margin: "5px 0" }}>
+                    <strong>Total:</strong> ${monthData.total.toFixed(2)}
+                  </p>
+                  <p style={{ margin: "5px 0", fontSize: "14px", color: "#666" }}>
+                    {monthData.count} expense{monthData.count !== 1 ? "s" : ""}
+                  </p>
+                  <div style={{ marginTop: "10px", fontSize: "12px" }}>
+                    <p style={{ margin: "3px 0", fontWeight: "bold" }}>By Category:</p>
+                    {Object.entries(monthData.byCategory).map(([cat, amount]) => (
+                      <p key={cat} style={{ margin: "2px 0", paddingLeft: "10px" }}>
+                        {cat.charAt(0).toUpperCase() + cat.slice(1)}: ${amount.toFixed(2)}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       <div className="expense-list">
         {filteredExpenses.length === 0 ? (
           <p
