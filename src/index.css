@@ -1,13 +1,168 @@
-body {
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+  font-family: --apple-system,system-ui,BlinkMacSystemFont,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;  
 }
+
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+h1{
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+
+.expense-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 15px;
+  margin-bottom: 30px;
+  align-items: end;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+}
+
+
+label {
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input, select {
+  padding: 12px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+button {
+  background:  #667eea;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #5a67d8;
+}
+
+.filters{
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.expense-list{
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+}
+
+.expense-info{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.expense-description {
+  font-weight: 600;
+  color: #333;
+}
+
+.expense-category {
+  background: #667eea;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  width: fit-content;
+}
+
+.expense-amount {
+  font-weight: bold;
+  color: #e53e3e;
+  font-size: 1.2rem;
+}
+
+.total-section {
+  text-align: right;
+  margin-top: 30px;
+  padding: 15px;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  text-align: center;
+}
+
+
+.total-amount {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+
+.remove-button {
+  background: #e53e3e;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .expense-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
